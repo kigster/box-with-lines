@@ -1,8 +1,39 @@
 #!/usr/bin/env bash
 set -euo pipefail
-IFS=$'\n\t'
-set -vx
 
-bundle install
+command -v brew >/dev/null && {
+  command -v rbenv >/dev/null || {
+    echo "Installing rbenv..."
+    brew install rbenv ruby-build
+  }
+}
+
+command -v direnv >/dev/null   && eval "$(direnv hook bash)"
+command -v rbenv >/dev/null    && eval "$(rbenv init -)"
+
+current_ruby_version="$(ruby -e 'print RUBY_VERSION')"
+required_ruby_version="$(cat .ruby-version | tr -d '\n')"
+
+echo "Checking for Ruby version ${required_ruby_version}..."
+if [[ "${required_ruby_version}" != "${current_ruby_version}" ]]; then
+  echo "Ruby version is wrong: want ${required_ruby_version}, got ${current_ruby_version}"
+  sleep 5
+  bash -c "$(curl -fsSL https://bit.ly/ruby-install-sh)" > /tmp/installer 
+  chmod 755 /tmp/installer
+  /tmp/installer "${required_ruby_version}"
+  rbenv global ${required_ruby_version}
+  rm -f /tmp/installer
+else
+  echo "Great, Ruby ${required_ruby_version} is already installed."
+fi
+
+echo "Updating gems..."
+gem update --system -N
+
+echo "Running bundle install..."
+bundle install -j 4
+
+echo "Running specs..."
+bundle exec rspec
 
 # Do any other automated setup that you need to do here

@@ -55,6 +55,16 @@ When this project was first examined, it had **20 failing RSpec tests** covering
 git clone https://github.com/kigster/box-with-lines
 cd box-with-lines
 
+# Simplest way is to run bin/setup
+bin/setup
+```
+
+Or, if it doesn't work or you prefer to do it manually:
+
+```bash
+# Install Ruby 3.4.4 first
+rbenv install -s 3.4.4
+
 # Install dependencies
 bundle install
 
