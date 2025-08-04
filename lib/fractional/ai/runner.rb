@@ -27,7 +27,6 @@ module Fractional
 
       def run
         configure
-        ap board_params
 
         Fractional::Ai::Ui.new(
           board: board_params.board,
