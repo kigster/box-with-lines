@@ -106,7 +106,7 @@ module Fractional
         return Float::INFINITY if p2.x == p1.x
 
         y = (coefficient * (x - p1.x)) + p1.y
-        y.to_i
+        y.round
       end
     end
   end
