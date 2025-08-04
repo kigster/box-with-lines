@@ -63,12 +63,18 @@ module Fractional
         puts (" " * left) + "comma separated as in X, Y where 0 <= X < #{width - 1} and so is Y.".yellow.bold
         puts (" " * left) + "For example: entering 5,10 means column 5 and row 10, or q or Q to exit: ".yellow.bold
         print((" " * left) + "[          ]".blue)
+
         move_cursor_left(10)
 
         $stdin.sync = true
         values = $stdin.gets.chomp
 
-        %w[q Q].include?(values) ? exit(0) : values.strip
+        if %w[q Q].include?(values)
+          puts; puts
+          exit(0)
+        else
+          values.gsub!(/\s+/, "")
+        end
 
         unless values.match?(/^[\d,]*$/)
           raise Errors::InvalidCoordinates, "Coordinates must be integers!"
@@ -86,9 +92,9 @@ module Fractional
           raise Errors::InvalidCoordinates, "Coordinates out of bounds."
         end
 
-        move_cursor_left(10)
+        move_cursor_left(100)
         move_cursor_up(1)
-        move_cursor_right(left + (width * CELL_WIDTH))
+        move_cursor_right(left + 13)
         check!
         highlight_board_at(x, y)
         Point.new(x, y)

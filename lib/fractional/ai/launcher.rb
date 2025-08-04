@@ -57,12 +57,18 @@ module Fractional
       def execute!
         code = 0
 
+        Kernel.trap("INT") do
+          2.times { stderr.puts }
+          stderr.puts "User aborted...".red
+          kernel.exit(0)
+        end
+
         Runner.new(argv: argv, launcher: self).run
 
         # Only exit if we're in interactive mode, otherwise let the process continue
         # so the user can see the drawn lines
         unless config.interactive
-          puts "\nPress any key to exit...".green
+          stdout.puts "\nPress any key to exit...".green
           begin
             require "io/console"
             stdin.getch unless Fractional::Ai.test_mode

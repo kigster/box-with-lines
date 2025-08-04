@@ -22,42 +22,49 @@ module Fractional
         context 'when first number is smaller' do
           let(:a) { 5 }
           let(:b) { 10 }
+
           it { is_expected.to eq(5) }
         end
 
         context 'when second number is smaller' do
           let(:a) { 10 }
           let(:b) { 5 }
+
           it { is_expected.to eq(5) }
         end
 
         context 'when numbers are equal' do
           let(:a) { 5 }
           let(:b) { 5 }
+
           it { is_expected.to eq(5) }
         end
 
         context 'with negative numbers' do
           let(:a) { -10 }
           let(:b) { -5 }
+
           it { is_expected.to eq(-10) }
         end
 
         context 'with mixed positive and negative' do
           let(:a) { -5 }
           let(:b) { 10 }
+
           it { is_expected.to eq(-5) }
         end
 
         context 'with zero' do
           let(:a) { 0 }
           let(:b) { 5 }
+
           it { is_expected.to eq(0) }
         end
 
         context 'with floats' do
           let(:a) { 3.14 }
           let(:b) { 2.71 }
+
           it { is_expected.to eq(2.71) }
         end
       end
@@ -68,42 +75,49 @@ module Fractional
         context 'when first number is larger' do
           let(:a) { 10 }
           let(:b) { 5 }
+
           it { is_expected.to eq(10) }
         end
 
         context 'when second number is larger' do
           let(:a) { 5 }
           let(:b) { 10 }
+
           it { is_expected.to eq(10) }
         end
 
         context 'when numbers are equal' do
           let(:a) { 5 }
           let(:b) { 5 }
+
           it { is_expected.to eq(5) }
         end
 
         context 'with negative numbers' do
           let(:a) { -10 }
           let(:b) { -5 }
+
           it { is_expected.to eq(-5) }
         end
 
         context 'with mixed positive and negative' do
           let(:a) { -5 }
           let(:b) { 10 }
+
           it { is_expected.to eq(10) }
         end
 
         context 'with zero' do
           let(:a) { 0 }
           let(:b) { -5 }
+
           it { is_expected.to eq(0) }
         end
 
         context 'with floats' do
           let(:a) { 3.14 }
           let(:b) { 2.71 }
+
           it { is_expected.to eq(3.14) }
         end
       end

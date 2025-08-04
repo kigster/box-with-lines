@@ -207,11 +207,13 @@ module Fractional
         it "creates and runs runner" do
           expect(Runner).to receive(:new).with(argv: argv, launcher: launcher)
           expect(runner).to receive(:run)
+          expect(stdout).to receive(:puts)
           launcher.execute!
         end
 
         it "exits with code 0 on success" do
           expect(kernel).to receive(:exit).with(0)
+          expect(stdout).to receive(:puts)
           launcher.execute!
         end
 

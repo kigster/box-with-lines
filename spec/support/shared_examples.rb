@@ -11,11 +11,13 @@ RSpec.shared_examples 'a validatable object' do
   describe '#valid?' do
     context 'when object is valid' do
       subject { valid_subject }
+
       its(:valid?) { is_expected.to be true }
     end
 
     context 'when object is invalid' do
       subject { invalid_subject }
+
       its(:valid?) { is_expected.to be false }
     end
   end

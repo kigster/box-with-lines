@@ -20,6 +20,7 @@ module Fractional
 
         context "with default dimensions" do
           let(:board) { described_class.new }
+
           its(:width) { is_expected.to eq(20) }
           its(:height) { is_expected.to eq(20) }
         end
@@ -27,6 +28,7 @@ module Fractional
         context "with custom dimensions" do
           let(:width) { 15 }
           let(:height) { 8 }
+
           its(:width) { is_expected.to eq(15) }
           its(:height) { is_expected.to eq(8) }
         end
@@ -51,6 +53,7 @@ module Fractional
 
       describe "dimensions behavior" do
         let(:dimensional_subject) { board }
+
         it_behaves_like "an object with dimensions"
       end
 
@@ -61,12 +64,14 @@ module Fractional
         context "with different dimensions" do
           let(:width) { 5 }
           let(:height) { 4 }
+
           it { is_expected.to eq(20) }
         end
 
         context "with square board" do
           let(:width) { 10 }
           let(:height) { 10 }
+
           it { is_expected.to eq(100) }
         end
       end
@@ -255,6 +260,7 @@ module Fractional
           let(:height) { 1 }
 
           its(:size) { is_expected.to eq(1) }
+
           it "has one row" do
             expect(subject.rows.length).to eq(1)
           end

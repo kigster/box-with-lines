@@ -28,12 +28,14 @@ module Fractional
         context 'with different coordinates' do
           let(:x) { 0 }
           let(:y) { 0 }
+
           it { is_expected.to eq("0,0") }
         end
 
         context 'with larger coordinates' do
           let(:x) { 100 }
           let(:y) { 250 }
+
           it { is_expected.to eq("100,250") }
         end
       end
@@ -51,54 +53,63 @@ module Fractional
         context 'with zero coordinates' do
           let(:x) { 0 }
           let(:y) { 0 }
+
           it { is_expected.to be true }
         end
 
         context 'with positive coordinates' do
           let(:x) { 100 }
           let(:y) { 200 }
+
           it { is_expected.to be true }
         end
 
         context 'with negative x coordinate' do
           let(:x) { -1 }
           let(:y) { 5 }
+
           it { is_expected.to be false }
         end
 
         context 'with negative y coordinate' do
           let(:x) { 5 }
           let(:y) { -1 }
+
           it { is_expected.to be false }
         end
 
         context 'with both negative coordinates' do
           let(:x) { -5 }
           let(:y) { -10 }
+
           it { is_expected.to be false }
         end
 
         context 'with non-integer x coordinate' do
           let(:x) { 5.5 }
           let(:y) { 10 }
+
           it { is_expected.to be false }
         end
 
         context 'with non-integer y coordinate' do
           let(:x) { 5 }
           let(:y) { 10.5 }
+
           it { is_expected.to be false }
         end
 
         context 'with string coordinates' do
           let(:x) { "5" }
           let(:y) { "10" }
+
           it { is_expected.to be false }
         end
 
         context 'with nil coordinates' do
           let(:x) { nil }
           let(:y) { nil }
+
           it { is_expected.to be false }
         end
       end

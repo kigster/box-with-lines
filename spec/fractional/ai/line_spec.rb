@@ -18,6 +18,7 @@ module Fractional
 
         context "with explicit color" do
           let(:color) { :blue }
+
           it "sets the color" do
             expect(line.instance_variable_get(:@color)).to eq(:blue)
           end
@@ -25,6 +26,7 @@ module Fractional
 
         context "without color" do
           let(:line) { described_class.new(p1, p2) }
+
           it "defaults to white" do
             expect(line.instance_variable_get(:@color)).to eq(:white)
           end
@@ -33,6 +35,7 @@ module Fractional
 
       describe "coordinate boundaries" do
         let(:subject_with_bounds) { line }
+
         it_behaves_like "an object with coordinate boundaries"
 
         context "with diagonal line from (0,0) to (5,5)" do
@@ -120,17 +123,20 @@ module Fractional
 
         context "with first point invalid" do
           let(:p1) { Point.new(-1, 0) }
+
           it { is_expected.to be false }
         end
 
         context "with second point invalid" do
           let(:p2) { Point.new(5, -1) }
+
           it { is_expected.to be false }
         end
 
         context "with both points invalid" do
           let(:p1) { Point.new(-1, -1) }
           let(:p2) { Point.new(-5, -5) }
+
           it { is_expected.to be false }
         end
       end
@@ -139,6 +145,7 @@ module Fractional
         context "with non-Point objects" do
           let(:p1) { "not a point" }
           let(:p2) { Point.new(5, 5) }
+
           it "raises an error" do
             expect { line }.to raise_error(ArgumentError)
           end
@@ -147,6 +154,7 @@ module Fractional
         context "with nil points" do
           let(:p1) { nil }
           let(:p2) { nil }
+
           it "raises an error" do
             expect { line }.to raise_error(ArgumentError)
           end
@@ -159,30 +167,35 @@ module Fractional
         context "with diagonal line (3-4-5 triangle)" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(3, 4) }
+
           it { is_expected.to eq(5.0) }
         end
 
         context "with horizontal line" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(5, 0) }
+
           it { is_expected.to eq(5.0) }
         end
 
         context "with vertical line" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(0, 3) }
+
           it { is_expected.to eq(3.0) }
         end
 
         context "with single point (zero length)" do
           let(:p1) { Point.new(5, 5) }
           let(:p2) { Point.new(5, 5) }
+
           it { is_expected.to eq(0.0) }
         end
 
         context "with diagonal line from (1,1) to (4,5)" do
           let(:p1) { Point.new(1, 1) }
           let(:p2) { Point.new(4, 5) }
+
           it { is_expected.to eq(5.0) } # sqrt((4-1)^2 + (5-1)^2) = sqrt(9+16) = 5
         end
       end
@@ -193,36 +206,42 @@ module Fractional
         context "with 45-degree diagonal line" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(5, 5) }
+
           it { is_expected.to eq(1.0) }
         end
 
         context "with horizontal line" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(5, 0) }
+
           it { is_expected.to eq(0.0) }
         end
 
         context "with vertical line" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(0, 5) }
+
           it { is_expected.to eq(Float::INFINITY) }
         end
 
         context "with negative slope" do
           let(:p1) { Point.new(0, 5) }
           let(:p2) { Point.new(5, 0) }
+
           it { is_expected.to eq(-1.0) }
         end
 
         context "with slope of 2" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(1, 2) }
+
           it { is_expected.to eq(2.0) }
         end
 
         context "with fractional slope" do
           let(:p1) { Point.new(0, 0) }
           let(:p2) { Point.new(2, 1) }
+
           it { is_expected.to eq(0.5) }
         end
 
