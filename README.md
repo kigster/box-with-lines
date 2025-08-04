@@ -1,4 +1,5 @@
-[![Ruby](https://github.com/kigster/box-with-lines/actions/workflows/main.yml/badge.svg)](https://github.com/kigster/box-with-lines/actions/workflows/main.yml)
+[![RSpec](https://github.com/kigster/box-with-lines/actions/workflows/rspec.yml/badge.svg)](https://github.com/kigster/box-with-lines/actions/workflows/rspec.yml)
+[![Rubocop](https://github.com/kigster/box-with-lines/actions/workflows/rubocop.yml/badge.svg)](https://github.com/kigster/box-with-lines/actions/workflows/rubocop.yml)
 
 # Box & Lines: ASCII Line Drawing Terminal Application
 
