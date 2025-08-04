@@ -120,13 +120,8 @@ This is a non-interactive mode where all the lines are defined in the JSON file 
 
 ### 3. Verbose Output
 
-```bash
-# Enable verbose output to see detailed information
-./bin/box-with-lines --verbose --config-file config/config.json
-
-# or with short flag
-./bin/box-with-lines -v -c config/config.json
-```
+> [!CAUTION]
+> Not currently implemented.
 
 ### 4. Help
 
