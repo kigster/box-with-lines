@@ -1,4 +1,6 @@
-# Fractional::Ai - ASCII Line Drawing Terminal Application
+[![Ruby](https://github.com/kigster/box-with-lines/actions/workflows/main.yml/badge.svg)](https://github.com/kigster/box-with-lines/actions/workflows/main.yml)
+
+# Box & Lines: ASCII Line Drawing Terminal Application
 
 A Ruby terminal application that allows users to draw ASCII art lines on a canvas. The application supports both interactive mode (where users input coordinates manually) and non-interactive mode (where lines are loaded from a JSON configuration file).
 
