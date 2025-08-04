@@ -63,6 +63,19 @@ bundle exec rubocop
 
 ## Usage
 
+You can run the executable with `-h` or `--help` to see the usage:
+
+
+```
+❯ bin/box-with-lines -h
+
+Usage: box-with-lines [options]
+    -c, --config-file FILE           Path to the JSON config file
+    -i, --interactive                Interactive mode, ask user for lines.
+    -v, --verbose                    Print verbose output
+    -h, --help                       Print help
+```
+
 The application can run in two modes:
 
 ### 1. Interactive Mode
