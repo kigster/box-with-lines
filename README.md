@@ -35,19 +35,6 @@ Here an example of running it in the non-interactive mode:
 
 You you have direnv setup you can run `direnv allow .` and then you can invoke the executable via `box-with-lines` without the `./bin`.
 
-## The Original Challenge
-
-When this project was first examined, it had **20 failing RSpec tests** covering various aspects of the application. The failing tests indicated issues with:
-
-1. **CLI Help Output** - Help text wasn't being displayed properly
-2. **Line Color Defaults** - Lines defaulted to green instead of white
-3. **Data Object Implementation** - Point class wasn't using Ruby's Data class for immutability
-4. **Argument Mutation** - Input arguments were being modified unexpectedly
-5. **Configuration Delegation** - Improper method delegation in the Runner class
-6. **Color Rendering** - Board rendering had incorrect color expectations
-7. **UI Highlighting** - Color sequences in the user interface were incorrect
-8. **Exit Code Handling** - Application exit codes weren't handled properly for testing
-
 ## Installation
 
 ```bash
