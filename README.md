@@ -2,15 +2,32 @@
 
 A Ruby terminal application that allows users to draw ASCII art lines on a canvas. The application supports both interactive mode (where users input coordinates manually) and non-interactive mode (where lines are loaded from a JSON configuration file).
 
+> [!NOTE]
+> It's important to note that this implementation does not use different ASCII characters to approximate a pixel image, as ASCII art often does. It just computes which squares should be highlighted to show a line of a given slope and start/end.
+
 ## Problem Definition
 
 This project provides a terminal-based ASCII art drawing system where users can:
+
 - Draw lines on an ASCII canvas using terminal characters
 - Work interactively by entering coordinates
 - Load pre-defined line configurations from JSON files
 - Render lines with colors and visual effects
 
 The end state is: "user starts the application, they are shown an empty canvas, they are prompted where they want to draw the next line, and the canvas re-renders with the new line."
+
+## Resulting Output
+
+Here an example of running it in the non-interactive mode:
+
+```bash
+$ bundle exec bin/box-with-lines -c c config/config.json
+```
+
+![board](doc/lines.png)
+
+> [!TIP]
+> Note, that we deliberately mark beginning and end of lines as green dots.
 
 ## The Original Challenge
 
