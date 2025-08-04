@@ -30,7 +30,7 @@ Here an example of running it in the non-interactive mode:
 ❯ bin/box-with-lines -c config/config.json
 ```
 
-![board](doc/lines.png)
+![board](doc/lines.png?123)
 
 > [!TIP]
 > Note, that we deliberately mark beginning and end of lines as green dots.
