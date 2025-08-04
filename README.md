@@ -1,6 +1,9 @@
 [![RSpec](https://github.com/kigster/box-with-lines/actions/workflows/rspec.yml/badge.svg)](https://github.com/kigster/box-with-lines/actions/workflows/rspec.yml)
 [![Rubocop](https://github.com/kigster/box-with-lines/actions/workflows/rubocop.yml/badge.svg)](https://github.com/kigster/box-with-lines/actions/workflows/rubocop.yml)
 
+> [!TIP]
+> 98% Spec Coverage
+
 # Box & Lines: ASCII Line Drawing Terminal Application
 
 A Ruby terminal application that allows users to draw ASCII art lines on a canvas. The application supports both interactive mode (where users input coordinates manually) and non-interactive mode (where lines are loaded from a JSON configuration file).
@@ -38,14 +41,24 @@ You you have direnv setup you can run `direnv allow .` and then you can invoke t
 
 ## Installation
 
+### Git Checkout
+
 ```bash
 # Clone the repository
 git clone https://github.com/kigster/box-with-lines
 cd box-with-lines
+```
 
+### Setup
+
+You may or may not have the Ruby 3.4.4 pre-installed, so the script `bin/setup` can install 3.4.4 on MacOS, possibly also on Linux.
+
+```bash
 # Simplest way is to run bin/setup
 bin/setup
 ```
+
+### Manual Setup
 
 Or, if it doesn't work or you prefer to do it manually:
 
@@ -54,7 +67,7 @@ Or, if it doesn't work or you prefer to do it manually:
 rbenv install -s 3.4.4
 
 # Install dependencies
-bundle install
+bundle install -j 4
 
 # Run tests to ensure everything works
 bundle exec rspec
@@ -63,10 +76,13 @@ bundle exec rspec
 bundle exec rubocop
 ```
 
+### Using the `Rakefile`
+
+You can also run `bundle exec rake` to invoke both `rubocop`, and `rspec`.
+
 ## Usage
 
 You can run the executable with `-h` or `--help` to see the usage:
-
 
 ```
 ❯ bin/box-with-lines -h
@@ -175,7 +191,8 @@ The JSON configuration file allows you to define a board and multiple lines with
 
 - **Horizontal lines**: Same Y coordinate for both points
 - **Vertical lines**: Same X coordinate for both points  
-- **Diagonal lines**: Different X and Y coordinates using line equation
+- **Diagonal lines**: Different X and Y coordinates using line equation.
+- **Rounding** is used to compute Y coordinate, not `to_int`.
 
 ### Visual Features
 

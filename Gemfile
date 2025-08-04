@@ -10,6 +10,7 @@ gem "irb"
 gem "rake", "~> 13.0"
 gem "rubocop"
 gem "rubocop-rspec"
+gem "simplecov"
 gem "yard"
 
 group :test do

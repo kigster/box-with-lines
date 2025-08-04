@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 require "rspec/its"
+
+require "simplecov"
+
+SimpleCov.start
+
 require "fractional/ai"
 
 Fractional::Ai.test_mode = true
