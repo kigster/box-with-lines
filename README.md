@@ -23,13 +23,17 @@ The end state is: "user starts the application, they are shown an empty canvas, 
 Here an example of running it in the non-interactive mode:
 
 ```bash
-$ bundle exec bin/box-with-lines -c c config/config.json
+❯ bin/box-with-lines -c config/config.json
 ```
 
 ![board](doc/lines.png)
 
 > [!TIP]
 > Note, that we deliberately mark beginning and end of lines as green dots.
+
+### If you have `direnv` 
+
+You you have direnv setup you can run `direnv allow .` and then you can invoke the executable via `box-with-lines` without the `./bin`.
 
 ## The Original Challenge
 
