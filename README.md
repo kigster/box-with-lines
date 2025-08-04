@@ -6,7 +6,29 @@
 
 # Box & Lines: ASCII Line Drawing Terminal Application
 
-A Ruby terminal application that allows users to draw ASCII art lines on a canvas. The application supports both interactive mode (where users input coordinates manually) and non-interactive mode (where lines are loaded from a JSON configuration file).
+A Ruby terminal application that allows users to draw ASCII art lines on a canvas. The application supports both
+
+* the interactive mode (where users input coordinates manually) and
+* non-interactive mode (where the data is loaded from a JSON configuration file).
+
+## Non-Interactive Mode
+
+Here an example of running it in the non-interactive mode:
+
+```bash
+❯ bin/box-with-lines -c config/config.json
+```
+
+![board](doc/lines-json.png?123)
+
+> [!TIP]
+> Note, that we deliberately mark beginning and end of lines as green dots.
+
+## Interactive Mode
+
+When you start the script with `-i`, you must enter comma-separated coordinates to get lines drawn:
+
+![board](doc/lines-interactive.png?123)
 
 > [!NOTE]
 > It's important to note that this implementation does not use different ASCII characters to approximate a pixel image, as ASCII art often does. It just computes which squares should be highlighted to show a line of a given slope and start/end.
@@ -15,27 +37,14 @@ A Ruby terminal application that allows users to draw ASCII art lines on a canva
 
 This project provides a terminal-based ASCII art drawing system where users can:
 
-- Draw lines on an ASCII canvas using terminal characters
-- Work interactively by entering coordinates
-- Load pre-defined line configurations from JSON files
-- Render lines with colors and visual effects
+* Draw lines on an ASCII canvas using terminal characters
+* Work interactively by entering coordinates
+* Load pre-defined line configurations from JSON files
+* Render lines with colors and visual effects
 
 The end state is: "user starts the application, they are shown an empty canvas, they are prompted where they want to draw the next line, and the canvas re-renders with the new line."
 
-## Resulting Output
-
-Here an example of running it in the non-interactive mode:
-
-```bash
-❯ bin/box-with-lines -c config/config.json
-```
-
-![board](doc/lines.png?123)
-
-> [!TIP]
-> Note, that we deliberately mark beginning and end of lines as green dots.
-
-### If you have `direnv` 
+### If you have `direnv`
 
 You you have direnv setup you can run `direnv allow .` and then you can invoke the executable via `box-with-lines` without the `./bin`.
 
@@ -49,7 +58,7 @@ git clone https://github.com/kigster/box-with-lines
 cd box-with-lines
 ```
 
-### Setup
+### Installing Dependencies
 
 You may or may not have the Ruby 3.4.4 pre-installed, so the script `bin/setup` can install 3.4.4 on MacOS, possibly also on Linux.
 
@@ -84,7 +93,7 @@ You can also run `bundle exec rake` to invoke both `rubocop`, and `rspec`.
 
 You can run the executable with `-h` or `--help` to see the usage:
 
-```
+```bash
 ❯ bin/box-with-lines -h
 
 Usage: box-with-lines [options]
@@ -177,50 +186,50 @@ The JSON configuration file allows you to define a board and multiple lines with
 
 ### Configuration Options
 
-- **board.width**: Width of the drawing canvas (default: 20)
-- **board.height**: Height of the drawing canvas (default: 20)  
-- **board.left**: Left offset for positioning the board on screen (default: 5)
-- **board.top**: Top offset for positioning the board on screen (default: 5)
-- **lines**: Array of line definitions
-  - **line**: Array of two points `[{x, y}, {x, y}]` defining start and end
-  - **color**: Color name (red, blue, yellow, green, white, etc.)
+* **board.width**: Width of the drawing canvas (default: 20)
+* **board.height**: Height of the drawing canvas (default: 20)  
+* **board.left**: Left offset for positioning the board on screen (default: 5)
+* **board.top**: Top offset for positioning the board on screen (default: 5)
+* **lines**: Array of line definitions
+  * **line**: Array of two points `[{x, y}, {x, y}]` defining start and end
+  * **color**: Color name (red, blue, yellow, green, white, etc.)
 
 ## Features
 
 ### Line Types Supported
 
-- **Horizontal lines**: Same Y coordinate for both points
-- **Vertical lines**: Same X coordinate for both points  
-- **Diagonal lines**: Different X and Y coordinates using line equation.
-- **Rounding** is used to compute Y coordinate, not `to_int`.
+* **Horizontal lines**: Same Y coordinate for both points
+* **Vertical lines**: Same X coordinate for both points  
+* **Diagonal lines**: Different X and Y coordinates using line equation.
+* **Rounding** is used to compute Y coordinate, not `to_int`.
 
 ### Visual Features
 
-- **Colored output**: Lines rendered with terminal colors
-- **Interactive highlighting**: Visual feedback when placing lines
-- **Bordered canvas**: Clean presentation with borders
-- **Coordinate validation**: Ensures points are within canvas bounds
+* **Colored output**: Lines rendered with terminal colors
+* **Interactive highlighting**: Visual feedback when placing lines
+* **Bordered canvas**: Clean presentation with borders
+* **Coordinate validation**: Ensures points are within canvas bounds
 
 ### Technical Features
 
-- **Immutable data structures**: Using Ruby's Data class for points
-- **Comprehensive validation**: Input validation for coordinates and files
-- **Error handling**: Graceful handling of invalid inputs and files
-- **Testing**: Complete RSpec test suite with 275+ tests
-- **Modular design**: Clean separation of concerns across classes
+* **Immutable data structures**: Using Ruby's Data class for points
+* **Comprehensive validation**: Input validation for coordinates and files
+* **Error handling**: Graceful handling of invalid inputs and files
+* **Testing**: Complete RSpec test suite with 275+ tests
+* **Modular design**: Clean separation of concerns across classes
 
 ## Architecture
 
 The application follows a modular design:
 
-- **`Fractional::Ai::Launcher`**: Entry point and command-line interface
-- **`Fractional::Ai::CliParser`**: Command-line argument parsing
-- **`Fractional::Ai::Runner`**: Application flow control and configuration
-- **`Fractional::Ai::Board`**: Canvas management and line rendering
-- **`Fractional::Ai::Line`**: Line data structure and calculations
-- **`Fractional::Ai::Point`**: Immutable point coordinates
-- **`Fractional::Ai::Ui`**: Terminal user interface and interactions
-- **`Fractional::Ai::Calc`**: Mathematical utility functions
+* **`Fractional::Ai::Launcher`**: Entry point and command-line interface
+* **`Fractional::Ai::CliParser`**: Command-line argument parsing
+* **`Fractional::Ai::Runner`**: Application flow control and configuration
+* **`Fractional::Ai::Board`**: Canvas management and line rendering
+* **`Fractional::Ai::Line`**: Line data structure and calculations
+* **`Fractional::Ai::Point`**: Immutable point coordinates
+* **`Fractional::Ai::Ui`**: Terminal user interface and interactions
+* **`Fractional::Ai::Calc`**: Mathematical utility functions
 
 ## Development
 
@@ -241,18 +250,18 @@ bundle exec rspec --format documentation
 
 The project includes:
 
-- **RuboCop**: Ruby style guide enforcement
-- **RSpec**: Comprehensive test coverage
-- **Documentation**: Inline code documentation
-- **Type checking**: Parameter validation throughout
+* **RuboCop**: Ruby style guide enforcement
+* **RSpec**: Comprehensive test suite
+* **SimpleCov**: Test Coverage computation
+* **Documentation**: Inline code documentation
 
 ## Dependencies
 
-- **Ruby**: >= 2.6.0 (tested with 3.4.4)
-- **amazing_print**: Pretty printing for debug output
-- **colored2**: Terminal color support
-- **rspec**: Testing framework
-- **rspec-its**: Enhanced testing syntax
+* **Ruby**: 3.4.4
+* **amazing_print**: Pretty printing for debug output
+* **colored2**: Terminal color support
+* **rspec**: Testing framework
+* **rspec-its**: Enhanced testing syntax
 
 ## Contributing
 
@@ -276,6 +285,6 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 ## Acknowledgments
 
-- Built as part of a Ruby programming exercise
-- Demonstrates terminal-based graphics and user interaction
-- Showcases test-driven development and debugging practices
+* Built as part of a Ruby programming exercise
+* Demonstrates terminal-based graphics and user interaction
+* Showcases test-driven development and debugging practices
